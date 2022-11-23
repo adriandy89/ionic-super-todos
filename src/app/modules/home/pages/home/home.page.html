@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> {{title}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-todos-input-box (newTodo)="addTodo($event)"></app-todos-input-box>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="todos-lists">
+          <ion-list>
+            <app-todos-list-item
+              [title]="'Todo1'"
+              [checked]="true"
+              (handleCheck)="checkTodo()"
+              (handleDelete)="deleteTodo()"
+            ></app-todos-list-item>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

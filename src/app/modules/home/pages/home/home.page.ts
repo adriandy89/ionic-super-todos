@@ -6,7 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  title = 'Todos App';
   constructor() {}
 
+  addTodo(title: string) {
+    console.log(title);
+  }
+
+  checkTodo() {
+    console.log('check');
+  }
+
+  deleteTodo() {
+    console.log('delete');
+  }
 }
