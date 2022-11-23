@@ -2,21 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './pages';
+import { TodosPage } from './pages';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { TodosPageRoutingModule } from './todos-routing.module';
 import { TodosInputBoxComponent, TodosListItemComponent } from './components';
 
 const components = [TodosListItemComponent, TodosInputBoxComponent];
-const pages = [HomePage];
+const pages = [TodosPage];
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    TodosPageRoutingModule,
   ],
   declarations: [...components, ...pages],
 })
-export class HomePageModule {}
+export class TodosPageModule {}

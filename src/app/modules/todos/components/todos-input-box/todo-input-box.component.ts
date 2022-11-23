@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { IonInput } from '@ionic/angular';
 
 @Component({
@@ -16,9 +15,8 @@ import { IonInput } from '@ionic/angular';
           maxlength="20"
           name="todo"
           inputmode="text"
-          value=""
-          (keyup.enter)="onAdd(todo)"
-          #todo
+          (keyup.enter)="onAdd()"
+          #newTodoEl
         ></ion-input>
       </ion-item>
     </div>
@@ -26,9 +24,14 @@ import { IonInput } from '@ionic/angular';
 })
 export class TodosInputBoxComponent {
   @Output() newTodo = new EventEmitter<string>();
+  @ViewChild('newTodoEl', { static: false }) newTodoEl!: IonInput;
 
-  onAdd(event: IonInput) {
-    const title = event.value as string;
-    this.newTodo.emit(title);
+  onAdd() {
+    const title = this.newTodoEl.value as string;
+
+    if (title !== '') {
+      this.newTodo.emit(title);
+      this.newTodoEl.value = '';
+    }
   }
 }

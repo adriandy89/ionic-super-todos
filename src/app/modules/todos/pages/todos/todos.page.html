@@ -20,12 +20,15 @@
     <ion-row>
       <ion-col>
         <div class="todos-lists">
+          <ng-container *ngIf="(todos$ | async)?.length === 0">
+            <p class="ion-text-center">There are not todos!</p>
+          </ng-container>
           <ion-list>
             <app-todos-list-item
-              [title]="'Todo1'"
-              [checked]="true"
-              (handleCheck)="checkTodo()"
-              (handleDelete)="deleteTodo()"
+              *ngFor="let todo of (todos$ | async)"
+              [todo]="todo"
+              (handleCheck)="checkTodo($event)"
+              (handleDelete)="deleteTodo($event)"
             ></app-todos-list-item>
           </ion-list>
         </div>
