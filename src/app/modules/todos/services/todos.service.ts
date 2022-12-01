@@ -36,6 +36,7 @@ export class TodosService {
     const todos = this.todosSubject.value;
     todos.push(todo);
     this.todosSubject.next(todos);
+    return true;
   }
 
   checkTodo(id: number) {
@@ -43,11 +44,13 @@ export class TodosService {
     const todoIndex = todos.findIndex((t) => t.id === id);
     todos[todoIndex].checked = !todos[todoIndex].checked;
     this.todosSubject.next(todos);
+    return true;
   }
 
   deleteTodo(id: number) {
     let todos = this.todosSubject.value;
     todos = todos.filter((t) => t.id !== id);
     this.todosSubject.next(todos);
+    return true;
   }
 }

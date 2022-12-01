@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NotificationService } from '@app/notification.service';
 import { Observable } from 'rxjs';
 import { ITodos } from '../../interfaces';
 import { Todo } from '../../models';
@@ -13,20 +14,29 @@ export class TodosPage {
   title = 'Todos App';
   todos$: Observable<ITodos>;
 
-  constructor(private readonly todosService: TodosService) {
-    this.todos$ = this.todosService.todos$;
+  constructor(
+    private readonly _todosService: TodosService,
+    private readonly _notificationService: NotificationService
+    ) {
+    this.todos$ = this._todosService.todos$;
   }
 
-  addTodo(title: string) {
+  async addTodo(title: string) {
     const todo = new Todo(title);
-    this.todosService.addTodo(todo);
+    this._todosService.addTodo(todo)
+    ? await this._notificationService.notify({typeOfNotification:'success', message:'Add Todo Success!'})
+    : await this._notificationService.notify({typeOfNotification:'alert', message:'Error Message'});
   }
 
-  checkTodo(id: number) {
-    this.todosService.checkTodo(id);
+  async checkTodo(id: number) {
+    this._todosService.checkTodo(id)
+    ? await this._notificationService.notify({typeOfNotification:'success', message:'Check Todo Success!'})
+    : await this._notificationService.notify({typeOfNotification:'alert', message:'Error Message'});
   }
 
-  deleteTodo(id: number) {
-    this.todosService.deleteTodo(id);
+  async deleteTodo(id: number) {
+    this._todosService.deleteTodo(id)
+    ? await this._notificationService.notify({typeOfNotification:'success', message:'Delete Todo Success!'})
+    : await this._notificationService.notify({typeOfNotification:'alert', message:'Error Message'});
   }
 }
