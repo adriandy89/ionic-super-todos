@@ -8,14 +8,18 @@ interface MessageProps {
   message: string;
 }
 
+abstract class NotificationClass {
+  abstract notify(messageProps: MessageProps): Promise<void>
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService {
+export class NotificationService extends NotificationClass {
 
-  constructor(private toastController: ToastController) {}
+  constructor(private toastController: ToastController) {super()}
 
-  async notify({typeOfNotification, message}: MessageProps) {
+  async notify({typeOfNotification, message}: MessageProps): Promise<void> {
     const toast = await this.toastController.create({
       message,
       duration: 1500,
