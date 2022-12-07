@@ -1,11 +1,9 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
+
 import * as mapboxgl from 'mapbox-gl';
-
 var MapboxDirections = require('@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions');
-
-
 
 @Component({
   selector: 'app-map',
@@ -22,7 +20,7 @@ var MapboxDirections = require('@mapbox/mapbox-gl-directions/dist/mapbox-gl-dire
     `
   ]
 })
-export class MapComponent  implements AfterViewInit, OnDestroy {
+export class MapComponent implements AfterViewInit, OnDestroy {
 
   @Input('geoJsonData') geoJsonData!: Feature<Geometry, GeoJsonProperties>;
   @Input('center') center: [number, number] = [0, 0]
@@ -62,12 +60,12 @@ export class MapComponent  implements AfterViewInit, OnDestroy {
       accessToken: environment.mapboxToken,
       unit: 'metric',
       profile: 'mapbox/cycling',
-      });
-    if (this.hasDirection){
+    });
+    if (this.hasDirection) {
       this.map.addControl(
         direction,
         'top-left'
-        );
+      );
     }
 
     this.map.on('load', () => {
@@ -113,7 +111,6 @@ export class MapComponent  implements AfterViewInit, OnDestroy {
       const { lng, lat } = target.getCenter();
       this.center = [lng, lat];
     });
-
 
   }
 
