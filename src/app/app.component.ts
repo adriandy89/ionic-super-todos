@@ -65,6 +65,10 @@ export class AppComponent implements OnInit {
       {
         title: 'Navigation Map',
         route: '/map/navigation'
+      },
+      {
+        title: 'Realtime Map',
+        route: '/map/realtime'
       }
     ]
 

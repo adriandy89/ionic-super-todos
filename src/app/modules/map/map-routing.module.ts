@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationMapPage, RouteMapPage } from './pages';
+import { NavigationMapPage, RealtimeMapPage, RouteMapPage } from './pages';
 
 const routes: Routes = [
   {
@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'navigation',
     component: NavigationMapPage,
+  },
+  {
+    path: 'realtime',
+    component: RealtimeMapPage,
   },
   {
     path: '',

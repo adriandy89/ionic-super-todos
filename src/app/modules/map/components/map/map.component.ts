@@ -38,10 +38,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     this.map.off('zoom', () => { });
     this.map.off('zoomend', () => { });
     this.map.off('move', () => { });
+    this.divMap.nativeElement = null;
   }
 
   ngAfterViewInit(): void {
-
     this.map = new mapboxgl.Map({
       container: this.divMap.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',

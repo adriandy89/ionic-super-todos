@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-route-map',
+  selector: 'app-navigation-map',
   template: `
     <ion-content [fullscreen]="true">
       <app-map
@@ -14,12 +14,18 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class NavigationMapPage {
+export class NavigationMapPage implements OnInit {
 
-  center: [number, number] = [-79.4512, 43.6568];
-  origin: [number, number] = [-79.45086, 43.65774];
-  destination: [number, number] = [-79.44271, 43.66360];
+  center!: [number, number];
+  origin!: [number, number];
+  destination!: [number, number];
 
   constructor() { }
+
+  ngOnInit(): void {
+    this.center = [-79.4512, 43.6568];
+    this.origin = [-79.45086, 43.65774];
+    this.destination = [-79.44271, 43.66360];
+  }
 
 }
