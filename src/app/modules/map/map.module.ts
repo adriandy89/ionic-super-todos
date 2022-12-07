@@ -4,9 +4,10 @@ import { MapPageRoutingModule } from './map-routing.module';
 import { MapComponent } from './components';
 import { NavigationMapPage, RealtimeMapPage, RouteMapPage } from './pages';
 import { IonicModule } from '@ionic/angular';
+import { MarkerMapPage } from './pages/marker-map/marker-map.page';
 
 const components = [MapComponent];
-const pages = [RouteMapPage, NavigationMapPage, RealtimeMapPage];
+const pages = [RouteMapPage, NavigationMapPage, RealtimeMapPage, MarkerMapPage];
 
 @NgModule({
   imports: [

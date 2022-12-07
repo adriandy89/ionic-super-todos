@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationMapPage, RealtimeMapPage, RouteMapPage } from './pages';
+import { MarkerMapPage } from './pages/marker-map/marker-map.page';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'realtime',
     component: RealtimeMapPage,
+  },
+  {
+    path: 'marker',
+    component: MarkerMapPage,
   },
   {
     path: '',
