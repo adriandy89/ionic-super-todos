@@ -8,6 +8,11 @@ const routes: Routes = [
       import('@app/modules/todos').then((m) => m.TodosPageModule),
   },
   {
+    path: 'map',
+    loadChildren: () =>
+      import('@app/modules/map').then((m) => m.MapPageModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
